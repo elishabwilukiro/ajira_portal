@@ -1,9 +1,12 @@
+import Hero from "../components/Hero";
+import TrustedCompany from "../components/TrustedCompany";
 
 const Home = () => {
   return (
-    <div>
-      <h2>Home</h2>
-    </div>
+    <>
+     <Hero />
+     <TrustedCompany />
+    </>
   );
 };
 
