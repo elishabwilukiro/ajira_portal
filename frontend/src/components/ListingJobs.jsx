@@ -1,4 +1,6 @@
 import { memo } from 'react';
+import JobCard from './JobCard';
+import FilteredListings from './FilteredListings';
 
 const ListingJobs = () => {
   return (

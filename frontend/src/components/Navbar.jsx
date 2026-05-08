@@ -1,6 +1,7 @@
 import { NavLink, Link } from "react-router-dom";
 import { FaBars, FaTimes} from 'react-icons/fa';
 import { useEffect, useState, useRef } from "react";
+import kfcLogo from '../assets/images/kfc.png';
 const Navbar = () => {
      const [menuOpen, setMenuOpen] = useState(false);
      const [isOpen, setIsOpen] = useState(false);
@@ -55,20 +56,20 @@ const Navbar = () => {
                                              Hi, Phanit
                                              </p>
                                              <img
-                                             src={null}
-                                             alt="Profile"
-                                             referrerPolicy="no-referrer"
-                                             className="h-8 w-8 rounded-lg object-cover border-2 border-gray-100"
+                                                  src={kfcLogo}
+                                                  alt="Profile"
+                                                  referrerPolicy="no-referrer"
+                                                  className="h-8 w-8 rounded-lg object-cover border-2 border-gray-100"
                                              />
-                                             {/* <svg className={`w-3.5 h-3.5 text-gray-400 transition duration-200 ${isOpen ? 'rotate-180' : ''}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                             <svg className={`w-3.5 h-3.5 text-gray-400 transition duration-200 ${isOpen ? 'rotate-180' : ''}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-                                             </svg> */}
+                                             </svg>
 
                                         </button>
 
                                         {/* Dropdown */}
                                         { isOpen && (
-                                             
+                                                                                          
                                              <div className="absolute right-0 mt-2 w-52 bg-white rounded-2xl shadow-xl border border-gray-100 z-50 py-2 overflow-hidden">
                                                   {/* User info */}
                                                   <div className="px-4 py-3 border-b border-gray-100">
@@ -126,7 +127,7 @@ const Navbar = () => {
                          
                               <div className="flex items-center gap-3 px-4 py-3 mb-2 bg-purple-50 rounded-xl mx-1">
                                    <img
-                                        src={null}
+                                        src={kfcLogo}
                                         alt="Profile"
                                         referrerPolicy="no-referrer"
                                         className="h-10 w-10 rounded-xl object-cover border-2 border-white shadow-sm"

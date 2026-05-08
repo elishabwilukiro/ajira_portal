@@ -1,4 +1,6 @@
+import Footer from "../components/Footer";
 import Hero from "../components/Hero";
+import ListingJobs from "../components/ListingJobs";
 import TrustedCompany from "../components/TrustedCompany";
 
 const Home = () => {
@@ -6,6 +8,8 @@ const Home = () => {
     <>
      <Hero />
      <TrustedCompany />
+     <ListingJobs />
+     <Footer />
     </>
   );
 };
