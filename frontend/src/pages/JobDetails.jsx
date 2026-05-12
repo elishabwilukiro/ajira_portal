@@ -1,6 +1,9 @@
-import { React } from 'react';
+import { React, useState } from 'react';
+import ApplyJobModal from '../components/ApplyJobModal';
+import Footer from '../components/Footer';
 
 const JobDetails = () => {
+  const [showModal, setShowModal] = useState(false);
   return (
     <>
      <div className="min-h-screen bg-white">
@@ -59,7 +62,8 @@ const JobDetails = () => {
                     {/* Right — Apply button */}
                     <div className="flex-shrink-0 w-full lg:w-auto">
                               <button 
-                              className="w-full lg:w-auto px-8 py-3 bg-white text-purple-700 font-bold rounded-xl shadow-lg hover:shadow-xl hover:bg-purple-50 transition-all duration-200 transform hover:scale-105 flex items-center justify-center gap-2"
+                                   onClick={()=>setShowModal(true)}
+                                   className="w-full lg:w-auto px-8 py-3 bg-white text-purple-700 font-bold rounded-xl shadow-lg hover:shadow-xl hover:bg-purple-50 transition-all duration-200 transform hover:scale-105 flex items-center justify-center gap-2 cursor-pointer"
                               >
                               <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" />
@@ -216,6 +220,12 @@ const JobDetails = () => {
           </div>
           </div>
      </div>
+
+     <ApplyJobModal
+          isOpen = {showModal}
+          onClose = {()=>setShowModal(false)}
+     />
+     <Footer />
     </>
   );
 };
