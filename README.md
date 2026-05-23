@@ -44,3 +44,8 @@
 - MySQL Database
 - PostgreSQL for robust data management.
 - Fetch Data Using Json Sever
+
+
+# Google OAuth
+- GOOGLE_CLIENT_ID=your_client_id
+- GOOGLE_CLIENT_SECRET=your_client_secret
