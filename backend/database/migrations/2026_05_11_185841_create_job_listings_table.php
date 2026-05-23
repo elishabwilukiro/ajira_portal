@@ -41,74 +41,74 @@ return new class extends Migration
     //     });
     // }
     public function up(): void
-{
-    Schema::create('job_listings', function (Blueprint $table) {
+    {
+        Schema::create('job_listings', function (Blueprint $table) {
 
-        $table->id();
+            $table->id();
 
-        $table->foreignId('user_id')
-              ->constrained('users')
-              ->onDelete('cascade');
+            $table->foreignId('user_id')
+                ->constrained('users')
+                ->onDelete('cascade');
 
-        // Job Details
-        $table->string('title', 255)->nullable();
+            // Job Details
+            $table->string('title', 255)->nullable();
 
-        $table->string('location', 255)->nullable();
+            $table->string('location', 255)->nullable();
 
-        $table->enum('location_type', [
-            'remote',
-            'on-site',
-            'hybrid'
-        ])->nullable();
+            $table->enum('location_type', [
+                'remote',
+                'on-site',
+                'hybrid'
+            ])->nullable();
 
-        $table->decimal('min_salary', 10, 2)->nullable();
+            $table->decimal('min_salary', 10, 2)->nullable();
 
-        $table->decimal('max_salary', 10, 2)->nullable();
+            $table->decimal('max_salary', 10, 2)->nullable();
 
-        $table->enum('job_type', [
-            'Full-time',
-            'Part-time',
-            'Contract',
-            'Internship',
-            'Freelance'
-        ])->nullable();
+            $table->enum('job_type', [
+                'Full-time',
+                'Part-time',
+                'Contract',
+                'Internship',
+                'Freelance'
+            ])->nullable();
 
-        $table->enum('level', [
-            'intern',
-            'junior',
-            'mid',
-            'senior',
-            'lead',
-            'manager'
-        ])->nullable();
+            $table->enum('level', [
+                'intern',
+                'junior',
+                'mid',
+                'senior',
+                'lead',
+                'manager'
+            ])->nullable();
 
-        $table->date('application_deadline')->nullable();
+            $table->date('application_deadline')->nullable();
 
-        // Fixed: timestamps() cannot accept a column name
-        $table->timestamp('posted_date')->nullable();
+            // Fixed: timestamps() cannot accept a column name
+            $table->timestamp('posted_date')->nullable();
 
-        // Company Info
-        $table->string('company_name', 255)->nullable();
+            // Company Info
+            $table->string('company_name', 255)->nullable();
 
-        $table->text('company_description')->nullable();
+            $table->text('company_description')->nullable();
 
-        $table->string('contact_person')->nullable();
+            $table->string('contact_person')->nullable();
 
-        $table->string('company_email')->nullable();
+            $table->string('company_email')->nullable();
 
-        $table->string('department')->nullable();
+            $table->string('department')->nullable();
 
-        $table->string('website', 255)->nullable();
+            $table->string('website', 255)->nullable();
 
-        // Status Fields
-        $table->boolean('status')->default(false);
+            // Status Fields
+            $table->boolean('status')->default(false);
 
-        $table->boolean('archive')->default(false);
+            $table->boolean('archive')->default(false);
 
-        // created_at & updated_at
-        $table->timestamps();
-    });
-}
+            // created_at & updated_at
+            $table->timestamps();
+        });
+    }
 
     /**
      * Reverse the migrations.

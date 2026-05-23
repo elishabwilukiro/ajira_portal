@@ -10,15 +10,20 @@ import {
      FaListAlt 
 } from 'react-icons/fa';
 
-const Aside = () => {
+const Aside = ({isOpen, toggleSidebar}) => {
 
   const base = "flex item-center p-3 rounded-lg text-gray-700 hover:text-purple-700";   
   const active = "flex item-center p-3 rounded-lg text-gray-700 transition duration-200";   
   return (
     <>
-          <aside>
+          <aside className={`fixed inset-y-0 left-0 z-50 w-64 bg-purple-50 text-gray-700 transform transition-transform duration-300 ease-in-out border-r border-purple-200 shadow-xl lg:translate-x-0 lg:static lg:inset-0 lg:z-0 lg:shadow-none'
+               ${isOpen ? 'translate-x-0' : '-translate-x-full'}`}
+          >
                <div className='p-6 text-2xl font-bold border-b border-purple-200 text-purple-800 flex justify-between items-center'>
                     Talent Hub
+                    <button onClick={toggleSidebar} className='lg:hidden text-purple-600'>
+                         <FaTimes size={22} />
+                    </button>
                </div>
                <nav className='flex-grow p-4 space-y-2'>
                     <NavLink 
@@ -32,7 +37,7 @@ const Aside = () => {
 
                <nav className='flex-grow p-4 space-y-2'>
                     <NavLink 
-                         to={`/dashboard`}
+                         to={`/viewApplications`}
                          className={({ isActive }) => isActive ? active : base }
                     >
                          <FaUsers className='w-6 h-6' /> 

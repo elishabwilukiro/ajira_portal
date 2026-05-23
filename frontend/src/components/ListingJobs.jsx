@@ -1,9 +1,36 @@
-import { memo } from 'react';
+import { React, useEffect, useState } from 'react';
 import JobCard from './JobCard';
 import FilteredListings from './FilteredListings';
+import api from '../api/axios';
 
-const ListingJobs = () => {
+const ListingJobs = ({job}) => {
+
+const [jobs, setJobs] = useState([]);
+const [loading, setLoading] = useState(true);
+const [error, setError] = useState(null);
+
+const fetchJobs = async () => {
+    
+    setLoading(true);
+    setError(null);
+
+    try {
+        const res = await api.get(`/jobs`);
+        setJobs(res.data || []);
+        console.log(res);
+    } catch (err) {
+        console.log("Error: ", err);        
+    } finally{
+        setLoading(false);
+    }   
+}  
+
+useEffect(() => {
+    fetchJobs();
+},[]);
+  
   return (
+
     <>
      <section className="py-12 px-4 sm:px-6 lg:px-8 bg-white">
             <div className="w-[95%] mx-auto">
@@ -38,7 +65,11 @@ const ListingJobs = () => {
                         </div>
                             <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
                                 {/* Job Cards */}
-                                <JobCard  />
+                                {jobs.map((job, index) => {
+                                    <JobCard key={job.id} job={job}  />
+                                })}
+
+
                             
                             </div>
                     </main>
@@ -50,4 +81,4 @@ const ListingJobs = () => {
   );
 };
 
-export default memo(ListingJobs);
+export default ListingJobs;

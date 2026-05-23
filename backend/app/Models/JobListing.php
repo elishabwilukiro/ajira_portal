@@ -7,29 +7,49 @@ use Illuminate\Database\Eloquent\Model;
 class JobListing extends Model
 {
     
-    protected $table = 'applied_jobs';
-    protected $primaryKey = 'id';
+    protected $table = 'job_listings';
+    protected $primaryKey = 'job_id';
     protected $fillable = [
         'user_id',
-        'job_id',
-        'first_name',
-        'last_name',
-        'email',
-        'phone',
-        'linkedin',
+        'title',
+        'location',
+        'location_type',
+        'min_salary',
+        'max_salary',
+        'job_type',
+        'level',
+        'application_deadline',
+        'posted_date',
+        'company_name',
+        'company_description',
+        'contact_person',
+        'company_email',
+        'department',
+        'website',
         'status',
         'archive',
-        'resume',
     ];
 
+    protected $casts = [
+        'application_deadline' => 'datetime',
+        'posted_date' => 'datetime',
+    ];
     // Relationship
-    public function job()
-    {
-        return $this->belongTo(JobListing::class,'job_id', 'id');
-    }
     public function user()
     {
         return $this->belongsTo(User::class,'user_id','id');
+    }
+    public function description()
+    {
+        return $this->hasOne(Description::class);
+    }
+    public function companyLogo()
+    {
+        return $this->hasOne(CompanyLogo::class,'job_listings_id');
+    }
+    public function appliedJob()
+    {
+        return $this->hasMany(AppliedJob::class,'job_id');
     }
 
 }
