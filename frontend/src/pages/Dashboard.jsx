@@ -29,7 +29,7 @@ const Dashboard = () => {
             <div className='fixed inset-0 z-40 bg-black/50 transition-opacity lg:hidden' onClick={toggleSidebar} />
           )}
 
-          <Aside isOpen = {isSidebarOpen} toggleSidebar={toggleSidebar} />
+          {/* <Aside isOpen = {isSidebarOpen} toggleSidebar={toggleSidebar} /> */}
           <ViewApplication />
 
 

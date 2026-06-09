@@ -25,7 +25,7 @@ class AttachJwtFromCookie
             {
                 $request->headers->set(
                     'Authorization',
-                    'Bearer'.$token);   
+                    'Bearer ' . $token);   
             }
         }   
         return $next($request);

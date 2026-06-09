@@ -6,7 +6,7 @@ const JobCard = ({job}) => {
   return (
     <>
 
-    <div className="group bg-white rounded-2xl border border-gray-100 shadow-sm hover:shadow-xl hover:border-purple-100 transition-all duration-300 p-5 flex flex-col justify-between">
+        <div className="group bg-white rounded-2xl border border-gray-100 shadow-sm hover:shadow-xl hover:border-purple-100 transition-all duration-300 p-5 flex flex-col justify-between">
 
             {/* Top — Logo + Title */}
             <div>
@@ -35,7 +35,7 @@ const JobCard = ({job}) => {
                     {/* Title + Company */}
                     <div className="min-w-0 flex-1">
                         <h2 className="text-base font-bold text-gray-900 leading-snug line-clamp-2 group-hover:text-purple-700 transition duration-200">
-                           {job.title}sssssssssss
+                           {job.title}
                         </h2>
                         <p className="text-sm text-gray-500 mt-0.5 truncate">
                             {job.company_name}

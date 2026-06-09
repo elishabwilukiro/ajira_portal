@@ -1,7 +1,8 @@
 import { React, useEffect, useState } from 'react';
 import JobCard from './JobCard';
 import FilteredListings from './FilteredListings';
-import api from '../api/axios';
+import { apiUrl } from '../api/Http';
+// import api from '../api/axios';
 
 const ListingJobs = ({job}) => {
 
@@ -9,21 +10,41 @@ const [jobs, setJobs] = useState([]);
 const [loading, setLoading] = useState(true);
 const [error, setError] = useState(null);
 
-const fetchJobs = async () => {
+// const fetchJobs = async () => {
     
+//     setLoading(true);
+//     setError(null);
+
+//     try {
+//         const res = await apiUrl.get(`/jobs`);
+//         setJobs(res.data || []);
+//         console.log(res);
+//     } catch (err) {
+//         console.log("Error: ", err);        
+//     } finally{
+//         setLoading(false);
+//     }   
+// }  
+
+const fetchJobs = async () => {
     setLoading(true);
     setError(null);
 
     try {
-        const res = await api.get(`/jobs`);
-        setJobs(res.data || []);
-        console.log(res);
+
+        const res = await fetch(`${apiUrl}/jobs`);
+
+        if(!res.ok) throw new Error("Failed to fetch listing jobs");
+        
+        const data =  await res.json();
+        setJobs(data || []);
+        
     } catch (err) {
-        console.log("Error: ", err);        
-    } finally{
+        setError("ERROR: ", err);
+    } finally {
         setLoading(false);
-    }   
-}  
+    }
+}
 
 useEffect(() => {
     fetchJobs();
@@ -64,12 +85,13 @@ useEffect(() => {
                             </div>
                         </div>
                             <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
+                                
                                 {/* Job Cards */}
-                                {jobs.map((job, index) => {
-                                    <JobCard key={job.id} job={job}  />
-                                })}
-
-
+                                {
+                                    jobs.map((job, index) => {
+                                        return(<JobCard key={job.id} job={job}  />)
+                                    })
+                                }
                             
                             </div>
                     </main>

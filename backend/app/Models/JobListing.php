@@ -8,7 +8,7 @@ class JobListing extends Model
 {
     
     protected $table = 'job_listings';
-    protected $primaryKey = 'job_id';
+    protected $primaryKey = 'id';
     protected $fillable = [
         'user_id',
         'title',

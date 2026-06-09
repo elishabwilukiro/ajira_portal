@@ -15,62 +15,67 @@ const RecruiterSignup = () => {
                               
                               <div className="flex space-x-4">
                               <TextInput 
-                              label="First Name"
-                              type="text"
-                              name="firstName"
-                              placeholder="First Name"
-                              required={true}
+                                   label="First Name"
+                                   type="text"
+                                   name="firstName"
+                                   placeholder="First Name"
+                                   required={true}
                               
                               />
 
                               <TextInput 
-                              label="Last Name"
-                              type="text"
-                              name="lastName" 
-                              placeholder="Last Name"
-                              required={true}
+                                   label="Last Name"
+                                   type="text"
+                                   name="lastName" 
+                                   placeholder="Last Name"
+                                   required={true}
                               
                               />
                               </div>     
 
                               <TextInput 
-                              label="Email"
-                              type="email"
-                              name="email" 
-                              placeholder="Enter your email"
-                              required={true}
+                                   label="Email"
+                                   type="email"
+                                   name="email" 
+                                   placeholder="Enter your email"
+                                   required={true}
                               
                               />
 
                               <TextInput 
-                              label="Password"
-                              type="password"
-                              name="password"
-                              placeholder="Create a password"
-                              required={true}
+                                   label="Password"
+                                   type="password"
+                                   name="password"
+                                   placeholder="Create a password"
+                                   required={true}
                               
                               />
 
                               <TextInput 
-                              label="Confirm Password"
-                              type="password"
-                              name="password_confirmation"
-                              placeholder="Confirm your password"
-                              required={true}
+                                   label="Confirm Password"
+                                   type="password"
+                                   name="password_confirmation"
+                                   placeholder="Confirm your password"
+                                   required={true}
                               
                               />
                               
                               <button
-                              type="submit"
-                              className="w-full bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-700 hover:to-indigo-700 text-white py-3 rounded-xl font-semibold transition duration-200 shadow-sm shadow-purple-200"
+                                   type="submit"
+                                   className="w-full bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-700 hover:to-indigo-700 text-white py-3 rounded-xl font-semibold transition duration-200 shadow-sm shadow-purple-200"
                               >
                               Sign Up
                               </button>
                          </form>
+
+                         {/* Footer */}
+                         <p className="mt-6 text-center text-sm text-gray-500">
+                              Already have an account?{" "}
+                              <NavLink to='/recruiterLogin' className="text-purple-600 font-medium cursor-pointer hover:underline">
+                                   Login here
+                              </NavLink>
+                         </p>
                          
-                         <div className="mt-6 text-sm flex justify-center">
-                              <NavLink to="/recruiterLogin" className="text-blue-600 hover:text-blue-700 transition duration-150">Back to Login</NavLink>
-                         </div>
                     </div>
                </div>
           </main>
