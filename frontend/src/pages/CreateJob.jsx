@@ -142,13 +142,15 @@ const CreateJob = () => {
 
                     <form onSubmit={handleSubmit} className="bg-white p-4 sm:p-8 rounded-xl shadow-lg space-y-8">
 
-                        <h3 className="text-lg font-semibold text-purple-700 border-b pb-2 mb-4 border-gray-300">Job Details</h3>
+                        <h3 className="text-lg font-semibold text-purple-700 border-b pb-2 mb-4 border-gray-300">
+                          Job Details
+                        </h3>
                         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
 
                             <TextInput 
                                 label="Job Title"
                                 name="title"
-                                placeholder="e.g., Senior Frontend Developer"
+                                placeholder="e.g Senior Frontend Developer"
                                 value={formData.title}
                                 onChange={handleChange}
                                 required={true}
@@ -192,7 +194,9 @@ const CreateJob = () => {
                             />
                         </div>
 
-                        <h3 className="text-lg font-semibold text-purple-700 border-b pb-2 mb-4 border-gray-300">Job Description Details</h3>
+                        <h3 className="text-lg font-semibold text-purple-700 border-b pb-2 mb-4 border-gray-300">
+                          Job Description Details
+                        </h3>
                         <div className="space-y-6">
 
                             <TextAreaInput
@@ -226,7 +230,9 @@ const CreateJob = () => {
                             />
                         </div>
 
-                        <h3 className="text-lg font-semibold text-purple-700 border-b pb-2 mb-4 border-gray-300">Location, Salary & Schedule</h3>
+                        <h3 className="text-lg font-semibold text-purple-700 border-b pb-2 mb-4 border-gray-300">
+                          Location, Salary & Schedule
+                        </h3>
                         <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
 
                             <TextInput 
@@ -301,7 +307,9 @@ const CreateJob = () => {
                             />
                         </div>
 
-                        <h3 className="text-lg font-semibold text-purple-700 border-b pb-2 mb-4 border-gray-300">Company & Contact Info</h3>
+                        <h3 className="text-lg font-semibold text-purple-700 border-b pb-2 mb-4 border-gray-300">
+                          Company & Contact Info
+                        </h3>
                         <div className="grid grid-cols-1 gap-6">
 
                              <TextAreaInput

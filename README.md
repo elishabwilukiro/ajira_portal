@@ -1,6 +1,6 @@
 # Job Portal Application
 
-# Features
+## Features
 - Post jobs (create, delete, view, update)
 - Apply Job Process 
 - Create Tables & Models
@@ -17,17 +17,17 @@
 - View Applications
 - Additional Logout
 
-# Other Features
+## Other Features
 - Login With Google Account
 - Use Of Google API
 
-# Frontend
+## Frontend
 - React
 - Vite
 - Tailwind-css
 - json-server --watch db.json --port 3001
 
-# Backend
+## Backend
 - Laravel-Php
 - Laravel JWT-Auth
      - composer require php-open-source-saver/jwt-auth
@@ -36,7 +36,7 @@
 - Laravel-APIs
      - php artisan make:middleware AttachJwtFromCookie
 
-# Database
+## Database
 - Fetch Data Using Json Sever 
      > npm install json-server
      > npm install axios
@@ -46,6 +46,6 @@
 - Fetch Data Using Json Sever
 
 
-# Google OAuth
+## Google OAuth
 - GOOGLE_CLIENT_ID=your_client_id
 - GOOGLE_CLIENT_SECRET=your_client_secret

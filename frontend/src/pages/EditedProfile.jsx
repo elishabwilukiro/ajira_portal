@@ -41,6 +41,7 @@ const EditedProfile = () => {
                     Edit Profile & Account Settings
                 </h1>
             </header>
+            
 
             <section  className="content-section">
             
