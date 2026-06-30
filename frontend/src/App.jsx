@@ -17,31 +17,34 @@ import { GoogleOAuthProvider } from '@react-oauth/google'
 import UserLogin from './pages/login/UserLogin'
 import UserSignup from './pages/login/UserSignup'
 import { ToastProvider } from './context/ToastContext'
+import { AuthProvider } from './context/AuthContext'
 
 function App() {
 
   return (
     <>
       <GoogleOAuthProvider clientId={import.meta.env.VITE_GOOGLE_CLIENT_ID}>  
-        <ToastProvider>     
-          <Navbar />
-          <Routes>
-            <Route path='/' element={<Home />} />
-            <Route path='/jobDetails' element={<JobDetails />} />
-            <Route path='/dashboard' element={<Dashboard />} />
-            <Route path='/createJob' element={<CreateJob />} />
-            <Route path='/editJob' element={<EditJob />} />
-            <Route path='/viewApplications' element={<ViewApplication />} />
-            <Route path='/manageJobs' element={<ManageJob />} />
-            <Route path='/editedProfile' element={<EditedProfile />} />
-            <Route path='/savedJobs' element={<SavedJobs />} />
-            <Route path='/recruiterLogin' element={<RecruiterLogin />} />
-            <Route path='/recruiterSignup' element={<RecruiterSignup />} />
-            <Route path='/userLogin' element={<UserLogin />} />
-            <Route path='/userSignup' element={<UserSignup />} />
+        <AuthProvider>
+          <ToastProvider>     
+            <Navbar />
+            <Routes>
+              <Route path='/' element={<Home />} />
+              <Route path='/jobDetails' element={<JobDetails />} />
+              <Route path='/dashboard' element={<Dashboard />} />
+              <Route path='/createJob' element={<CreateJob />} />
+              <Route path='/editJob' element={<EditJob />} />
+              <Route path='/viewApplications' element={<ViewApplication />} />
+              <Route path='/manageJobs' element={<ManageJob />} />
+              <Route path='/editedProfile' element={<EditedProfile />} />
+              <Route path='/savedJobs' element={<SavedJobs />} />
+              <Route path='/recruiterLogin' element={<RecruiterLogin />} />
+              <Route path='/recruiterSignup' element={<RecruiterSignup />} />
+              <Route path='/userLogin' element={<UserLogin />} />
+              <Route path='/userSignup' element={<UserSignup />} />
 
-          </Routes>
-        </ToastProvider> 
+            </Routes>
+          </ToastProvider> 
+        </AuthProvider>
       </GoogleOAuthProvider>
     </>
   )
