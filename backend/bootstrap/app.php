@@ -13,7 +13,7 @@ return Application::configure(basePath: dirname(__DIR__))
         health: '/up',
     )
     ->withMiddleware(function (Middleware $middleware): void {
-        // $middleware->prependToGroup('api', AttachJwtFromCookie::class);
+        $middleware->prependToGroup('api', AttachJwtFromCookie::class);
         $middleware->validateCsrfTokens(except:[
             'api/*', // --- Disable CSRF for API if using JWT/Cookies
         ]);

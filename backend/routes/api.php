@@ -6,22 +6,24 @@ use App\Http\Controllers\Auth\GoogleController;
 use App\Http\Middleware\AttachJwtFromCookie;
 use Illuminate\Support\Facades\Route;
 
+// Authentication routes
 Route::post('/auth/login',[AuthController::class,'login']);
 Route::post('/auth/register',[AuthController::class,'register']);
 Route::post('/auth/google-login',[GoogleController::class,'googleLogin']);
 
-
-// Route::group(['middleware' => ['auth:sanctum','admin']], function(){
-//     Route::post('jobs', [JobController::class,'store']);
-// });
+// Anyone routes
+Route::get('jobs', [JobController::class,'index']);
 
 
 Route::middleware([AttachJwtFromCookie::class,'auth:api'])->group(function(){
-    Route::get('jobs', [JobController::class,'index']);
+    
+    Route::post('/auth/logout',[AuthController::class,'logout']);
+    Route::get('/auth/me',[AuthController::class,'me']);
 
 
     // Recruiter routes
     Route::middleware('role:recruiter')->group(function(){
+        Route::post('jobs', [JobController::class,'store']);
 
     });
 
@@ -30,5 +32,3 @@ Route::middleware([AttachJwtFromCookie::class,'auth:api'])->group(function(){
         
     });
 });
-
-Route::post('jobs', [JobController::class,'store']);
