@@ -1,54 +1,63 @@
 import { React, useEffect, useState } from 'react';
-import JobCard from './JobCard';
+import { useSearchParams } from 'react-router-dom';
 import FilteredListings from './FilteredListings';
-import { apiUrl } from '../api/Http';
-// import api from '../api/axios';
+import JobCard from './JobCard';
+import api from '../api/axios';
 
-const ListingJobs = ({job}) => {
 
-const [jobs, setJobs] = useState([]);
-const [loading, setLoading] = useState(true);
-const [error, setError] = useState(null);
+const ListingJobs = ({searchParams}) => {
 
-// const fetchJobs = async () => {
-    
-//     setLoading(true);
-//     setError(null);
+    const [meta, setMeta] = useState({currect_page: 1, last_page: 9});
+    const [currectPage, setCurrentPage] = useState(1);
+    const [perPage, setPerPage] = useState(9);
+    const [jobs, setJobs] = useState([]);
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState(null);
 
-//     try {
-//         const res = await apiUrl.get(`/jobs`);
-//         setJobs(res.data || []);
-//         console.log(res);
-//     } catch (err) {
-//         console.log("Error: ", err);        
-//     } finally{
-//         setLoading(false);
-//     }   
-// }  
+    // Filter State
+    const [filters, setFilters] = useState({
+        keyword: '',
+        location: '',
+        min_salary: '',
+        job_type: [],
+        location_type: [],
+    });
 
-const fetchJobs = async () => {
-    setLoading(true);
-    setError(null);
+    // Reset Filters
+    useEffect(() => {
+        setCurrentPage(1);
+    }, [searchParams?.keyword, searchParams?.location, filters, perPage]);
 
-    try {
 
-        const res = await fetch(`${apiUrl}/jobs`);
+    // Fetch Jobs From API
+    const fetchJobs = async () => {
+        setLoading(true);
+        setError(null);
 
-        if(!res.ok) throw new Error("Failed to fetch listing jobs");
-        
-        const data =  await res.json();
-        setJobs(data || []);
-        
-    } catch (err) {
-        setError("ERROR: ", err);
-    } finally {
-        setLoading(false);
+        try {
+            const params = new URLSearchParams();
+            params.append('page', currectPage);
+            params.append('per_page', perPage);
+            
+            // Merge Here Search & Side
+
+
+
+            const res = await api.get(`/jobs`);
+            // console.log(res.data.data);
+            // setMeta(res.data.meta);  
+            setJobs(res.data.data);  
+
+        } catch (err) {
+            setError("ERROR: ", err);
+        } finally {
+            setLoading(false);
+        }
     }
-}
 
-useEffect(() => {
-    fetchJobs();
-},[]);
+    useEffect(() => {
+        fetchJobs();
+    },[]);
   
   return (
 

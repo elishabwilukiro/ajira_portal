@@ -3,6 +3,19 @@ import { Link, NavLink } from 'react-router-dom';
 import defaultLogo from '../assets/images/default_logo.jpg';
 
 const JobCard = ({job}) => {
+
+    const formatedSalary = (num) => {
+        if(!num) return '0';
+        if(num >= 1_000_000) return (num / 1_000_000).toFixed(1) + 'M';
+        if(num >= 1_000) return (num / 1_000).toFixed(1) + 'K';
+        return num.toString();
+    }
+
+    const capitalizeFirst = (text) => {
+        if(!text) return '';
+        return text.charAt(0).toUpperCase() + text.slice(1);
+    }
+
   return (
     <>
 
@@ -54,19 +67,19 @@ const JobCard = ({job}) => {
                         <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
                         </svg>
-                        {job.location_type}
+                        {capitalizeFirst(job.location_type)}
                     </span>
                     <span className="inline-flex items-center gap-1 text-xs font-semibold bg-green-50 text-green-700 px-2.5 py-1 rounded-full">
                         <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                         </svg>
-                        ${job.min_salary} - ${job.max_salary}
+                        {formatedSalary(job.min_salary)} - {formatedSalary(job.max_salary)}
                     </span>
                     <span className="inline-flex items-center gap-1 text-xs font-semibold bg-gray-100 text-gray-600 px-2.5 py-1 rounded-full">
                         <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
                         </svg>
-                        {job.level}
+                        {capitalizeFirst(job.level)}
                     </span>
                 </div>
             </div>

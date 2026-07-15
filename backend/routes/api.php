@@ -12,7 +12,7 @@ Route::post('/auth/register',[AuthController::class,'register']);
 Route::post('/auth/google-login',[GoogleController::class,'googleLogin']);
 
 // Anyone routes
-Route::get('jobs', [JobController::class,'index']);
+Route::get('/jobs', [JobController::class,'index']);
 
 
 Route::middleware([AttachJwtFromCookie::class,'auth:api'])->group(function(){

@@ -154,8 +154,8 @@ class JobController extends Controller
             'responsibility' => $request->responsibility,
             'company_logo'  => $request->company_logo,
             'posted_date'   => Carbon::now(),
-            // 'user_id'       => Auth['api']->id()
-            'user_id'       => 1
+            'user_id'       => Auth('api')->id(),
+            // 'user_id'       => 1
         ]);
 
         // Save Description

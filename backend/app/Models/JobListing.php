@@ -45,11 +45,11 @@ class JobListing extends Model
     }
     public function companyLogo()
     {
-        return $this->hasOne(CompanyLogo::class,'job_listings_id');
+        return $this->hasOne(CompanyLogo::class,'job_listing_id','id');
     }
     public function appliedJob()
     {
-        return $this->hasMany(AppliedJob::class,'job_id');
+        return $this->hasMany(AppliedJob::class,'job_id','id');
     }
 
 }
